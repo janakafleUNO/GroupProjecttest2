@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'carviewer/base.html' %}
+{% load static %}
+{% block content %}
+<head>
+<title>CarViewer</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+div.gallery {
+  border: 1px solid #ccc;
+}
+
+div.gallery:hover {
+  border: 1px solid #777;
+}
+
+div.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+/*This is for search box*/
+.topnav {
+  overflow: hidden;
+  background-color: #e9e9e9;
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #2196F3;
+  color: white;
+}
+
+.topnav input[type=text] {
+  float: right;
+  padding: 6px;
+  margin-top: 8px;
+  margin-right: 16px;
+  border: none;
+  font-size: 17px;
+}
+@media screen and (max-width: 600px) {
+  .topnav a, .topnav input[type=text] {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+
+  .topnav input[type=text] {
+    border: 1px solid #ccc;
+  }
+}
+/* Style the header this is about us box */
+header {
+  background-color: #666;
+  width: 100%;
+  height: 300px;
+  padding: 30px;
+  text-align: center;
+  font-size: 35px;
+  color: white;
+}
+
+/* Create two columns/boxes that floats next to each other box on right side */
+nav {
+  float: left;
+  width: 10%;
+  height: 600px; /* only for demonstration, should be removed */
+  background: #ccc;
+  padding: 5px;
+}
+
+/* Style the list inside the menu */
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+article {
+  float: right;
+  padding: 10px;
+  width: 90%;
+  background-color: #f1f1f1;
+  height: 600px; /* only for demonstration, should be removed */
+}
+
+/* Clear floats after the columns */
+section::after {
+  content: "";
+  text-align: center;
+  display: table;
+  clear: both;
+}
+
+/* Style the footer */
+footer {
+  background-color: #777;
+  padding: 5px;
+  text-align: center;
+  color: white;
+}
+
+/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+@media (max-width: 600px) {
+  nav, article {
+    width: 100%;
+    height: auto;
+  }
+}
+/*this is for responsive image gallery*/
+.responsive {
+  padding: 0 6px;
+  float: left;
+  width: 24.99999%;
+}
+
+@media only screen and (max-width: 700px) {
+  .responsive {
+    width: 49.99999%;
+    margin: 6px 0;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .responsive {
+    width: 100%;
+  }
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+</style>
+</head>
+    <body>
+    <header>
+  <h3 style="font-family:'Comic Sans MS', 'Comic Sans', cursive"> About Us</h3>
+  <p id="losinfo">
+    <span style="font-size:20px;">
+      <span style="font-family:'URW Chancery L', cursive">
+      With over 500+ experts, CarViewer is the most trusted guide in car Reviewing. Our website has in-depth reviews, new listings, top models and Verified reviews. Shoppers count on us at every step of their journey. We literally get in the driver's seat to show shoppers virtually how each car performs on the road.
+    </span>
+    </span>
+  </p>
+</header>
+
+    <section>
+  <nav>
+    <h4 style="font-family:'Comic Sans MS', 'Comic Sans', cursive"> Navigate </h4>
+    <ul>
+
+      <img src="/static/Images/Brands.png" alt="Sample" width="80" height="60">
+<li><a href="{% url 'carviewer:carbrand_list' %}">Car Brands</a></li>
+<br>
+<br>
+
+      <img src="/static/Images/Model.png" alt="Sample1" width="80" height="60">
+<li><a href="{% url 'carviewer:carmodel_list' %}">Car Models</a></li>
+
+<br>
+<br>
+
+      <img src="/static/Images/Types.png" alt="Sample2" width="80" height="60">
+<li><a href="{% url 'carviewer:cartype_list' %}">Car Types</a></li>
+<br>
+<br>
+
+
+      <img src="/static/Images/Reviews.png" alt="Sample3" width="80" height="60">
+<li><a href="{% url 'carviewer:carreview_list' %}">Car Reviews</a></li>
+    </ul>
+  </nav>
+
+  <article>
+    <h1 style="font-family:'Comic Sans MS', 'Comic Sans', cursive">Home</h1>
+    <div class="responsive">
+  <div class="gallery">
+    <a target="_blank" href="">
+      <img src="/static/Images/Boss 429.jpeg" alt="Mustang Boss 429" width="600" height="400">
+    </a>
+    <div class="desc">According to its Deluxe Marti Report, this Boss 429 was assigned KK 429 NASCAR production number 1335 and completed ahead of schedule on February 13, 1969. Today, it clearly continues to benefit from a high-quality, ground-up restoration dating to 2004/2005 and features a correct and highly detailed engine bay with the correct emissions-control equipment in place</div>
+  </div>
+</div>
+
+
+<div class="responsive">
+  <div class="gallery">
+    <a target="_blank" href="">
+      <img src="/static/Images/1969-dodge-charger.jpeg" alt="1969 Dodge Charger" width="600" height="400">
+    </a>
+    <div class="desc">There were two different 383 engines available for the 1969 model year: 2-barrel and 4-barrel. The 2-barrel was rated at 290 hp. The four-barrel engine was rated at 330 hp and was identified on the air cleaner as "383 / FOUR BARREL". The 330-hp engine was unique to the Charger model in 1969. While this engine was available with an un-silenced air cleaner option, it differed internally from the 335-hp 383 "Magnum".</div>
+  </div>
+</div>
+
+<div class="responsive">
+  <div class="gallery">
+    <a target="_blank" href="">
+      <img src="/static/Images/camaro 1969.jpeg" alt="Camaro 1969" width="600" height="400">
+    </a>
+    <div class="desc">To increase competitiveness in the SCCA Trans-Am racing series, optional four-wheel disc brakes with four-piston calipers were made available during the year, under RPO JL8, for US$500.30.[22] This system used components from the Corvette and made for a major improvement in the braking capability and was a key to winning the Trans-Am championship. The option was expensive and only 206 units were produced.</div>
+  </div>
+</div>
+
+<div class="responsive">
+  <div class="gallery">
+    <a target="_blank" href="">
+      <img src="/static/Images/1969_alfa_romeo_spider.webp" alt="1969 Alfa Romeo Spider" width="600" height="400">
+    </a>
+    <div class="desc">Alfa Romeo has competed successfully in Grand Prix motor racing, Formula One, sportscar racing, touring car racing, and rallies. It has competed both as a constructor and an engine supplier, via works entries (usually under the name Alfa Corse or Autodelta), and private entries. The first racing car was made in 1913, three years after the foundation of the company, and Alfa Romeo won the inaugural world championship for Grand Prix cars in 1925.</div>
+  </div>
+</div>
+
+  </article>
+</section>
+
+<footer>
+  <p>
+    <span style="font-size:20px;">
+      <span style="font-family:'URW Chancery L', cursive">
+        Come Explore your choices...!
+      </span>
+    </span>
+  </p>
+</footer>
+
+</body>
+
+{% endblock %}
+</html>
